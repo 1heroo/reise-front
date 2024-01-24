@@ -1,0 +1,172 @@
+/* Buttons */
+
+.fab{
+    position: fixed;
+    right: 60px;
+    bottom: 30px;
+    border-radius: 50%;
+    z-index: 10;
+
+}
+
+button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.fab > button {
+    outline: none;
+    position: relative;
+    padding: 10px;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 0;
+    color: #ffffff;
+    background: #FF3000;
+    /*background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);*/
+    transition: all 0.3s ease-in-out 0s;
+    font-size: 35px;
+    /*box-shadow: 1px 0 28px rgba(84,216,201,4.64);*/
+}
+
+.fab > button::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(112px + -35px);
+    min-height: calc(60px + 12px);
+    border: 6px solid #FF3000;
+    /*box-shadow: 0 0 60px rgba(0,255,203,.64);*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+}
+
+.fab button:hover, .button:focus {
+    color: #313133;
+    transform: translateY(-6px);
+}
+
+.fab button:hover::before, button:focus::before {
+    opacity: 1;
+}
+
+.fab > button::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #FF3000;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 110px;
+        height: 110px;
+        opacity: 0;
+    }
+}
+
+.menu{
+    position: absolute;
+    bottom: 100px;
+    left: 10px;
+    display: grid;
+    place-content: center;
+    gap: 20px;
+    width: 64px;
+    scale: 0;
+    translate: 0 80%;
+    transform-origin: 50% 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.375s;
+}
+
+.fab > button > i{
+    font-size: 40px;
+}
+
+.fab.open .menu{
+    scale: 1;
+    opacity: 1;
+    translate: 0;
+    visibility: visible;
+}
+
+.menu > button{
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #00000090;
+    color: #FE0000;
+    transition: 0.3s;
+    font-size: 32px;
+}
+
+.menu > button:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.menu > button > span {
+    position: absolute;
+    right: 84px;
+    white-space: nowrap;
+    translate: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 30px;
+    color: #ffffff;
+    background: #00000090;
+    padding: 10px 10px;
+    border-radius: 12px;
+    text-shadow: black;
+    font-weight: 900;
+    transition: 0.5s;
+}
+
+.menu > button:hover > span {
+    translate: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+@media (max-width: 500px) {
+    .fab {
+        right: 20px;
+        bottom: 19px;
+    }
+    .fab button:hover, .button:focus {
+        color: #313133;
+        transform: translateY(0);
+    }
+
+    .fab button:hover::before, button:focus::before {
+        opacity: 0;
+    }
+
+}
+
